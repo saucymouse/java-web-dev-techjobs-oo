@@ -79,6 +79,16 @@ public class JobTest {
         String actual = noEmployer.toString();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void jobOnlyContainsId() {
+        Job jobOnlyId = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
+        //should be able to instantiate with new Job() but run into issues
+        String expected = "OOPS! This job does not seem to exist.";
+        String actual = jobOnlyId.toString();
+
+        assertEquals(expected, actual);
 
     }
 }

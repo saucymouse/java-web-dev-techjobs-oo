@@ -14,6 +14,7 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private static final String noData = "Data not available";
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -35,14 +36,41 @@ public class Job {
 
     @Override
     public String toString() {
-        return "\nID: " + id +
-                "\nName: " + name +
-//                "\nEmployer: " + ((employer == null)?employer:"Data not available") +
-                "\nEmployer: " + employer +
-                "\nLocation: " + location +
-                "\nPosition Type: " + positionType +
-                "\nCore Competency: " + coreCompetency +
-                "\n";
+        int onlyId = 0;
+
+        if (name == null || name == "") {
+            name = noData;
+            onlyId++;
+        }
+
+        if (employer.getValue() == null || employer.getValue() == "") {
+            employer.setValue(noData);
+            onlyId++;
+        }
+
+        if (location.getValue() == null || location.getValue() == "") {
+            location.setValue(noData);
+            onlyId++;
+        }
+
+        if (positionType.getValue() == null || positionType.getValue() == "") {
+            positionType.setValue(noData);
+            onlyId++;
+        }
+
+        if (coreCompetency.getValue() == null || coreCompetency.getValue() == "") {
+            coreCompetency.setValue(noData);
+            onlyId++;
+        }
+
+        String output = String.format("\nID: %s\nName: %s\nEmployer: %s\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n",
+                id, name, employer, location, positionType, coreCompetency);
+
+        if (onlyId == 5) {
+            output = "OOPS! This job does not seem to exist.";
+        }
+
+        return output;
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
