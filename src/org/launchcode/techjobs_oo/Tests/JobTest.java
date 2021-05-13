@@ -54,16 +54,31 @@ public class JobTest {
 
     @Test
     public void toStringReturnsLabels() {
-        String myJobString = myFirstJob.toString();
-        String expected = "\nID: 1" +
+        String expected = "\nID: " + myFirstJob.getId() +
                 "\nName: Product tester" +
                 "\nEmployer: ACME" +
                 "\nLocation: Desert" +
                 "\nPosition Type: Quality control" +
                 "\nCore Competency: Persistence" +
                 "\n";
+        String actual = myFirstJob.toString();
 
-        assertEquals(expected, myJobString);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void toStringReturnsDataNotAvailable() {
+        Job noEmployer = new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String expected = "\nID: " + noEmployer.getId() +
+                "\nName: Product tester" +
+                "\nEmployer: Data not available" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Quality control" +
+                "\nCore Competency: Persistence" +
+                "\n";
+        String actual = noEmployer.toString();
+
+        assertEquals(expected, actual);
 
     }
 }

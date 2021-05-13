@@ -37,6 +37,7 @@ public class Job {
     public String toString() {
         return "\nID: " + id +
                 "\nName: " + name +
+//                "\nEmployer: " + ((employer == null)?employer:"Data not available") +
                 "\nEmployer: " + employer +
                 "\nLocation: " + location +
                 "\nPosition Type: " + positionType +
