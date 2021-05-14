@@ -68,7 +68,7 @@ public class JobTest {
 
     @Test
     public void toStringReturnsDataNotAvailable() {
-        Job noEmployer = new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job noEmployer = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String expected = "\nID: " + noEmployer.getId() +
                 "\nName: Product tester" +
                 "\nEmployer: Data not available" +
@@ -83,8 +83,8 @@ public class JobTest {
 
     @Test
     public void jobOnlyContainsId() {
-        Job jobOnlyId = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
-        //should be able to instantiate with new Job() but run into issues
+        Job jobOnlyId = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        //how come i can't instantiate with new Job()?
         String expected = "OOPS! This job does not seem to exist.";
         String actual = jobOnlyId.toString();
 
