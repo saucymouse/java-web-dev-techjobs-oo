@@ -41,6 +41,7 @@ public class JobTest {
     @Test
     public void testJobsForEquality() {
         assertFalse(myFirstJob.equals(mySecondJob));
+        assertTrue(mySecondJob.getId() - myFirstJob.getId() == 1);
     }
 
     @Test
