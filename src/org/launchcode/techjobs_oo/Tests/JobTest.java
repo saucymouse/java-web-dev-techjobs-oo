@@ -25,7 +25,7 @@ public class JobTest {
 
     @Test
     public void testSettingJobId() {
-        assertNotEquals(myFirstJob.getId(), mySecondJob.getId());
+        assertFalse(myFirstJob.equals(mySecondJob));
         assertTrue(mySecondJob.getId() - myFirstJob.getId() == 1);
     }
 
